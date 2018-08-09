@@ -53,7 +53,7 @@ import { Transfer } from "./transfer";
 import { Tree, TreeChildren } from "./tree";
 import { Upload } from "./upload";
 
-export declare module IView {
+declare module IView {
   interface IAffix extends Affix { }
   interface IAlert extends Alert { }
   interface IAutoComplete extends AutoComplete { }
