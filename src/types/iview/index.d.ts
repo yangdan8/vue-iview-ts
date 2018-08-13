@@ -1,13 +1,12 @@
-// Type definitions for iview 2.5.1
+// Type definitions for iview 3.0.0
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
-import Vue from "vue";
-
-export default IView;
+import Vue, { VNode, PluginFunction } from "vue";
 
 import { Affix } from "./affix";
 import { Alert } from "./alert";
+import { Anchor, AnchorLink } from "./anchor";
 import { AutoComplete } from "./auto-complete";
 import { Avatar } from "./avatar";
 import { BackTop } from "./back-top";
@@ -17,17 +16,20 @@ import { Button, ButtonGroup } from "./button";
 import { Card } from "./card";
 import { Carousel } from "./carousel";
 import { Cascader } from "./cascader";
+import { Cell, CellGroup } from "./cell";
 import { Checkbox, CheckboxGroup } from "./checkbox";
 import { Circle } from "./circle";
 import { Collapse, CollapsePanel } from "./collapse";
 import { ColorPicker } from "./color-picker";
 import { DatePicker, DatePickerOptions } from "./date-picker";
+import { Divider } from "./divider";
 import { Dropdown, DropdownItem } from "./dropdown";
 import { Form, FormItem } from "./form";
 import { GridRow, GridCol } from "./grid";
 import { Icon } from "./icon";
 import { Input } from "./input";
 import { InputNumber } from "./input-number";
+import { Layout } from "./layout";
 import { LoadingBarInstance, LoadingBarConfig } from "./loading-bar";
 import { Menu, MenuItem, Submenu, MenuGroup } from "./menu";
 import { MessageInstance, MessageConfig } from "./message";
@@ -41,92 +43,195 @@ import { Rate } from "./rate";
 import { Scroll } from "./scroll";
 import { Select, SelectOption, SelectOptionGroup } from "./select";
 import { Spin } from "./spin";
+import { Split } from "./split";
 import { Steps, Step } from "./steps";
 import { Switch } from "./switch";
 import { Table, TableColumn, TableRenderCreateElementData, TableRenderCreateElementResult, TableColumnRenderParams, TableExportCsvParams } from "./table";
 import { Tabs, TabPane } from "./tabs";
 import { Tag } from "./tag";
+import { Time } from "./time";
 import { Timeline, TimelineItem } from "./timeline";
 import { TimePicker } from "./time-picker";
 import { Tooltip } from "./tooltip";
 import { Transfer } from "./transfer";
-import { Tree, TreeChildren } from "./tree";
+import { Tree, TreeChild } from "./tree";
 import { Upload } from "./upload";
 
-declare module IView {
-  interface IAffix extends Affix { }
-  interface IAlert extends Alert { }
-  interface IAutoComplete extends AutoComplete { }
-  interface IAvatar extends Avatar { }
-  interface IBackTop extends BackTop { }
-  interface IBadge extends Badge { }
-  interface IBreadcrumb extends Breadcrumb { }
-  interface IBreadcrumbItem extends BreadcrumbItem { }
-  interface IButton extends Button { }
-  interface IButtonGroup extends ButtonGroup { }
-  interface ICard extends Card { }
-  interface ICarousel extends Carousel { }
-  interface ICascader extends Cascader { }
-  interface ICheckbox extends Checkbox { }
-  interface ICheckboxGroup extends CheckboxGroup { }
-  interface ICircle extends Circle { }
-  interface ICollapse extends Collapse { }
-  interface ICollapsePanel extends CollapsePanel { }
-  interface IColorPicker extends ColorPicker { }
-  interface IDatePicker extends DatePicker { }
-  interface IDatePickerOptions extends DatePickerOptions { }
-  interface IDropdown extends Dropdown { }
-  interface IDropdownItem extends DropdownItem { }
-  interface IForm extends Form { }
-  interface IFormItem extends FormItem { }
-  interface IGridCol extends GridCol { }
-  interface IGridRow extends GridRow { }
-  interface IIcon extends Icon { }
-  interface IInput extends Input { }
-  interface IInputNumber extends InputNumber { }
-  interface ILoadingBarConfig extends LoadingBarConfig { }
-  interface ILoadingBarInstance extends LoadingBarInstance { }
-  interface IMenu extends Menu { }
-  interface IMenuGroup extends MenuGroup { }
-  interface IMenuItem extends MenuItem { }
-  interface IMessageConfig extends MessageConfig { }
-  interface IMessageInstance extends MessageInstance { }
-  interface IModal extends Modal { }
-  interface IModalConfig extends ModalConfig { }
-  interface IModalInstance extends ModalInstance { }
-  interface INoticeConfig extends NoticeConfig { }
-  interface INoticeGlobalConfig extends NoticeGlobalConfig { }
-  interface INoticeInstance extends NoticeInstance { }
-  interface IPage extends Page { }
-  interface IPoptip extends Poptip { }
-  interface IProgress extends Progress { }
-  interface IRadio extends Radio { }
-  interface IRadioGroup extends RadioGroup { }
-  interface IRate extends Rate { }
-  interface IScroll extends Scroll { }
-  interface ISelect extends Select { }
-  interface ISelectOption extends SelectOption { }
-  interface ISelectOptionGroup extends SelectOptionGroup { }
-  interface ISpin extends Spin { }
-  interface IStep extends Step { }
-  interface ISteps extends Steps { }
-  interface ISubmenu extends Submenu { }
-  interface ISwitch extends Switch { }
-  interface ITable extends Table { }
-  interface ITableColumn extends TableColumn { }
-  interface ITableColumnRenderParams extends TableColumnRenderParams { }
-  interface ITableExportCsvParams extends TableExportCsvParams { }
-  interface ITableRenderCreateElementData extends TableRenderCreateElementData { }
-  interface ITableRenderCreateElementResult extends TableRenderCreateElementResult { }
-  interface ITabPane extends TabPane { }
-  interface ITabs extends Tabs { }
-  interface ITag extends Tag { }
-  interface ITimeline extends Timeline { }
-  interface ITimelineItem extends TimelineItem { }
-  interface ITimePicker extends TimePicker { }
-  interface ITooltip extends Tooltip { }
-  interface ITransfer extends Transfer { }
-  interface ITree extends Tree { }
-  interface ITreeChildren extends TreeChildren { }
-  interface IUpload extends Upload { }
+declare namespace IView {
+  type IAffix = Affix;
+  type IAlert = Alert;
+  type IAnchor = Anchor;
+  type IAnchorLink = AnchorLink;
+  type IAutoComplete = AutoComplete;
+  type IAvatar = Avatar;
+  type IBackTop = BackTop;
+  type IBadge = Badge;
+  type IBreadcrumb = Breadcrumb;
+  type IBreadcrumbItem = BreadcrumbItem;
+  type IButton = Button;
+  type IButtonGroup = ButtonGroup;
+  type ICard = Card;
+  type ICarousel = Carousel;
+  type ICascader = Cascader;
+  type ICell = Cell;
+  type ICellGroup = CellGroup;
+  type ICheckbox = Checkbox;
+  type ICheckboxGroup = CheckboxGroup;
+  type ICircle = Circle;
+  type ICollapse = Collapse;
+  type ICollapsePanel = CollapsePanel;
+  type IColorPicker = ColorPicker;
+  type IDatePicker = DatePicker;
+  type IDatePickerOptions = DatePickerOptions;
+  type IDivider = Divider;
+  type IDropdown = Dropdown;
+  type IDropdownItem = DropdownItem;
+  type IForm = Form;
+  type IFormItem = FormItem;
+  type IGridCol = GridCol;
+  type IGridRow = GridRow;
+  type IIcon = Icon;
+  type IInput = Input;
+  type IInputNumber = InputNumber;
+  type ILayout = Layout;
+  type ILoadingBarInstance = LoadingBarInstance;
+  type ILoadingBarConfig = LoadingBarConfig;
+  type IMenu = Menu;
+  type IMenuGroup = MenuGroup;
+  type IMenuItem = MenuItem;
+  type IMessageConfig = MessageConfig;
+  type IMessageInstance = MessageInstance;
+  type IModal = Modal;
+  type IModalConfig = ModalConfig;
+  type IModalInstance = ModalInstance;
+  type INoticeConfig = NoticeConfig;
+  type INoticeGlobalConfig = NoticeGlobalConfig;
+  type INoticeInstance = NoticeInstance;
+  type IPage = Page;
+  type IPoptip = Poptip;
+  type IProgress = Progress;
+  type IRadio = Radio;
+  type IRadioGroup = RadioGroup;
+  type IRate = Rate;
+  type IScroll = Scroll;
+  type ISelect = Select;
+  type ISelectOption = SelectOption;
+  type ISelectOptionGroup = SelectOptionGroup;
+  type ISpin = Spin;
+  type ISplit = Split;
+  type IStep = Step;
+  type ISteps = Steps;
+  type ISubmenu = Submenu;
+  type ISwitch = Switch;
+  type ITable = Table;
+  type ITableColumn = TableColumn;
+  type ITableColumnRenderParams = TableColumnRenderParams;
+  type ITableExportCsvParams = TableExportCsvParams;
+  type ITableRenderCreateElementData = TableRenderCreateElementData;
+  type ITableRenderCreateElementResult = TableRenderCreateElementResult;
+  type ITabPane = TabPane;
+  type ITabs = Tabs;
+  type ITag = Tag;
+  type ITime = Time;
+  type ITimeline = Timeline;
+  type ITimelineItem = TimelineItem;
+  type ITimePicker = TimePicker;
+  type ITooltip = Tooltip;
+  type ITransfer = Transfer;
+  type ITree = Tree;
+  type ITreeChild = TreeChild;
+  type IUpload = Upload;
+}
+
+declare interface IView extends PluginFunction<any> {
+  readonly IAffix: Affix;
+  readonly IAlert: Alert;
+  readonly IAnchor: Anchor;
+  readonly IAnchorLink: AnchorLink;
+  readonly IAutoComplete: AutoComplete;
+  readonly IAvatar: Avatar;
+  readonly IBackTop: BackTop;
+  readonly IBadge: Badge;
+  readonly IBreadcrumb: Breadcrumb;
+  readonly IBreadcrumbItem: BreadcrumbItem;
+  readonly IButton: Button;
+  readonly IButtonGroup: ButtonGroup;
+  readonly ICard: Card;
+  readonly ICarousel: Carousel;
+  readonly ICascader: Cascader;
+  readonly ICell: Cell;
+  readonly ICellGroup: CellGroup;
+  readonly ICheckbox: Checkbox;
+  readonly ICheckboxGroup: CheckboxGroup;
+  readonly ICircle: Circle;
+  readonly ICollapse: Collapse;
+  readonly ICollapsePanel: CollapsePanel;
+  readonly IColorPicker: ColorPicker;
+  readonly IDatePicker: DatePicker;
+  readonly IDatePickerOptions: DatePickerOptions;
+  readonly IDivider: Divider;
+  readonly IDropdown: Dropdown;
+  readonly IDropdownItem: DropdownItem;
+  readonly IForm: Form;
+  readonly IFormItem: FormItem;
+  readonly IGridCol: GridCol;
+  readonly IGridRow: GridRow;
+  readonly IIcon: Icon;
+  readonly IInput: Input;
+  readonly IInputNumber: InputNumber;
+  readonly ILayout: Layout;
+  readonly ILoadingBarInstance: LoadingBarInstance;
+  readonly ILoadingBarConfig: LoadingBarConfig;
+  readonly IMenu: Menu;
+  readonly IMenuGroup: MenuGroup;
+  readonly IMenuItem: MenuItem;
+  readonly IMessageConfig: MessageConfig;
+  readonly IMessageInstance: MessageInstance;
+  readonly IModal: Modal;
+  readonly IModalConfig: ModalConfig;
+  readonly IModalInstance: ModalInstance;
+  readonly INoticeConfig: NoticeConfig;
+  readonly INoticeGlobalConfig: NoticeGlobalConfig;
+  readonly INoticeInstance: NoticeInstance;
+  readonly IPage: Page;
+  readonly IPoptip: Poptip;
+  readonly IProgress: Progress;
+  readonly IRadio: Radio;
+  readonly IRadioGroup: RadioGroup;
+  readonly IRate: Rate;
+  readonly IScroll: Scroll;
+  readonly ISelect: Select;
+  readonly ISelectOption: SelectOption;
+  readonly ISelectOptionGroup: SelectOptionGroup;
+  readonly ISpin: Spin;
+  readonly ISplit: Split;
+  readonly IStep: Step;
+  readonly ISteps: Steps;
+  readonly ISubmenu: Submenu;
+  readonly ISwitch: Switch;
+  readonly ITable: Table;
+  readonly ITableColumn: TableColumn;
+  readonly ITableColumnRenderParams: TableColumnRenderParams;
+  readonly ITableExportCsvParams: TableExportCsvParams;
+  readonly ITableRenderCreateElementData: TableRenderCreateElementData;
+  readonly ITableRenderCreateElementResult: TableRenderCreateElementResult;
+  readonly ITabPane: TabPane;
+  readonly ITabs: Tabs;
+  readonly ITag: Tag;
+  readonly ITime: Time;
+  readonly ITimeline: Timeline;
+  readonly ITimelineItem: TimelineItem;
+  readonly ITimePicker: TimePicker;
+  readonly ITooltip: Tooltip;
+  readonly ITransfer: Transfer;
+  readonly ITree: Tree;
+  readonly ITreeChild: TreeChild;
+  readonly IUpload: Upload;
+}
+
+export default IView;
+
+declare module 'iview/types/iview' {
+  const iView: IView;
+  export default iView;
 }

@@ -7,19 +7,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-import IView from '@/types/iview';
+import { Component, Vue } from "vue-property-decorator";
+import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import IView from "@/types/iview";
 
 @Component({
   components: {
-    HelloWorld,
-  },
+    HelloWorld
+  }
 })
 export default class Home extends Vue {
   protected fff() {
     const btn = this.$refs.gg as IView.IButton;
-    btn.type = 'warning';
+    btn.type = "warning";
   }
 }
 </script>

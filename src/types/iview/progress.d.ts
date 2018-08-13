@@ -1,41 +1,47 @@
-// Type definitions for iview 2.5.1
+// Type definitions for iview 3.0.0
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
-import Vue from "vue";
-
-export default Progress;
+import Vue, { VNode } from "vue";
 
 export interface Progress extends Vue {
   /**
    * 百分比
    * @default 0
    */
-  percent: number;
+  percent?: number;
   /**
    * 状态，可选值为normal、active、wrong、success
    * @default normal
    */
-  status: string;
+  status?: 'normal'|'active'|'wrong'|'success';
   /**
-   * 进度条的线宽，单位 px，默认值10
+   * 进度条的线宽，单位 px
+   * @default 10
    */
-  'stroke-width': number;
+  'stroke-width'?: number;
   /**
-   * 隐藏数值或状态图标，默认值false
+   * 隐藏数值或状态图标
+   * @default false
    */
-  'hide-info': boolean;
+  'hide-info'?: boolean;
   /**
-   * 是否在垂直方向显示，默认值false
+   * 是否在垂直方向显示
+   * @default false
    */
-  vertical: boolean;
+  vertical?: boolean;
+  /**
+   * 已完成的分段百分比
+   * @default 0
+   */
+  'success-percent'?: number;
   /**
    * slot插槽对象
    */
-  $slot: {
+  $slots: {
     /**
      * 自定义显示状态内容
      */
-    '': Vue
+    '': VNode[];
   };
 }

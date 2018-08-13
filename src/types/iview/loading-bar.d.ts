@@ -1,10 +1,8 @@
-// Type definitions for iview 2.5.1
+// Type definitions for iview 3.0.0
 // Project: https://github.com/iview/iview
 // Definitions by: yangdan
 // Definitions: https://github.com/yangdan8/iview.git
-import Vue from "vue";
-
-export default LoadingBarInstance;
+import Vue, { VNode } from "vue";
 
 export interface LoadingBarInstance {
   /**
@@ -23,12 +21,12 @@ export interface LoadingBarInstance {
    * 精确加载到指定的进度
    * @param percent 指定的进度百分比
    */
-  update(percent: number): void;
+  update(percent?: number): void;
   /**
    * 全局配置
    * @param options 配置对象
    */
-  config(options: LoadingBarConfig): void;
+  config(options?: LoadingBarConfig): void;
   /**
    * 全局销毁
    */
@@ -58,6 +56,6 @@ declare module "vue/types/vue" {
     /**
      * 加载进度条
      */
-    $Loading: LoadingBarInstance;
+    $Loading?: LoadingBarInstance;
   }
 }
