@@ -4,8 +4,7 @@ import router from './router';
 import store from './store';
 import 'iview/dist/styles/iview.css';
 import './registerServiceWorker';
-import iView from 'iview';
-import IView from '@/types/iview';
+import IView from 'iview';
 
 Vue.config.productionTip = false;
 
