@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-import { IButton } from 'iview';
+import { Button } from 'iview';
 
 @Component({
   components: {
@@ -18,7 +18,7 @@ import { IButton } from 'iview';
 })
 export default class Home extends Vue {
   protected fff() {
-    const btn = this.$refs.gg as IButton;
+    const btn = this.$refs.gg as Button;
     btn.type = 'warning';
   }
 }
