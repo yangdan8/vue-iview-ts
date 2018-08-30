@@ -4,11 +4,11 @@ import router from './router';
 import store from './store';
 import 'iview/dist/styles/iview.css';
 import './registerServiceWorker';
-import IView from 'iview';
+import iView from 'iview';
 
 Vue.config.productionTip = false;
 
-Vue.use(iView as IView);
+Vue.use(iView);
 
 new Vue({
   router,
