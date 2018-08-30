@@ -13,8 +13,8 @@ import { IButton } from 'iview';
 
 @Component({
   components: {
-    HelloWorl, d
-  , },
+    HelloWorld,
+  },
 })
 export default class Home extends Vue {
   protected fff() {
