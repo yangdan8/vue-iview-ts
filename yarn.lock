@@ -4383,9 +4383,9 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-iview@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/iview/-/iview-3.0.0.tgz#1adc36a1ff7665d34316144b27f81c227b599475"
+iview@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/iview/-/iview-3.1.0.tgz#b11e62136a1f215f4957961d79104df657a314a0"
   dependencies:
     async-validator "^1.8.2"
     deepmerge "^2.1.0"
