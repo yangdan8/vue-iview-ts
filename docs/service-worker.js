@@ -17,7 +17,7 @@ importScripts(
   "/precache-manifest.d0795175617e2e4cb4181f192624f6aa.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "vue-ts"});
+workbox.core.setCacheNameDetails({prefix: "vue-iview-ts"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to

@@ -1,4 +1,4 @@
-# vue-ts
+# vue-iview-ts
 
 ## Project setup
 ```
