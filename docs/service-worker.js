@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.1bd2c45a777a3ce1e46f5fc1846ad7b2.js"
+  "/precache-manifest.36b1b5ecfc79d471a70901f241a0b12b.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vue-iview-ts"});
