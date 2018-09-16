@@ -1,6 +1,6 @@
 {
-  "singleQuote": true, //使用单引号而不是双引号,true就是对
-  "semi": false,
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
   "files.autoSave": "off",
   "editor.formatOnSave": true,
   "vetur.format.defaultFormatter.html": "js-beautify-html",
